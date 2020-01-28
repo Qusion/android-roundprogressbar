@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundProgressBar">
+        <attr name="max" format="integer" />
+        <attr name="zeroProgressEnabled" format="boolean" />
+        <attr name="progress" format="integer" />
+        <attr name="progressColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="endCapsSize" format="dimension" />
+        <attr name="endCapsVisible" format="boolean" />
+        <attr name="strokeWidth" format="dimension" />
+    </declare-styleable>
+</resources>
