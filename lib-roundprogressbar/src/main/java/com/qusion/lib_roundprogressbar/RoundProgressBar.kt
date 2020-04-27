@@ -120,7 +120,7 @@ class RoundProgressBar : View {
             if (mZeroProgressEnabled || mAnimationProgress > 0) {
                 canvas.drawCircle(
                     (mWidth / 2).toFloat(),
-                    mStrokeWidth.toFloat(),
+                    mStrokeWidth.toFloat() + paddingTop,
                     mEndCapsSize.toFloat(),
                     mPrimaryPaint!!
                 )
@@ -132,6 +132,12 @@ class RoundProgressBar : View {
                 )
             }
         }
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
+
     }
 
     override fun setBackgroundColor(mBackgroundColor: Int) {
@@ -152,12 +158,16 @@ class RoundProgressBar : View {
             var mProg = if (mProgress < mMax) mProgress else mMax
             mProg = if (mProg < 0) 0 else mProg
             if (mProg != this.mProgress) {
-                val animation = RoundProgressBarAnimation(this, mProg)
-                animation.duration = 1000
-                this.startAnimation(animation)
-                this.mProgress = mProg
+                if(visibility == VISIBLE) {
+                    val animation = RoundProgressBarAnimation(this, mProg)
+                    animation.duration = 1000
+                    this.startAnimation(animation)
+                    this.mProgress = mProg
+                } else {
+                    this.animationProgress = mProg.toFloat()
+                    this.mProgress = mProg
+                }
             }
-
         }
 
     var animationProgress: Float
