@@ -1,6 +1,7 @@
 package com.qusion.roundprogressbar
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -20,17 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         val random = Random(101)
         var progress = 0
-        random_button.setOnClickListener {
+        animate_button.setOnClickListener {
             progress = random.nextInt(0, 100)
             progressbar.progress = progress
-        }
-
-        repeat_button.setOnClickListener {
-            progressbar.progress = progress
-        }
-
-        visibility_button.setOnClickListener {
-            progressbar.visibility = if(progressbar.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
         }
     }
 

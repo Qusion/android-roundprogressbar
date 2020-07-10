@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="roundprogressbar_colorPrimary">#008577</color>
-    <color name="roundprogressbar_bg_color">#1A2A3039</color>
+    <color name="roundprogressbar_colorPrimary">#00F0FF</color>
+    <color name="roundprogressbar_bg_color">#26FFFFFF</color>
 </resources>

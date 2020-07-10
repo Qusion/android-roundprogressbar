@@ -9,5 +9,16 @@
         <attr name="endCapsSize" format="dimension" />
         <attr name="endCapsVisible" format="boolean" />
         <attr name="strokeWidth" format="dimension" />
+        <attr name="backgroundStrokeWidth" format="dimension" />
+        <attr name="animationDuration" format="integer" />
+        <attr format="integer" name="style" >
+            <flag name="full" value="0"/>
+            <flag name="half" value="1"/>
+        </attr>
+        <attr format="integer" name="backgroundStyle">
+            <flag name="full" value="0"/>
+            <flag name="dotted" value="1"/>
+        </attr>
+
     </declare-styleable>
 </resources>
