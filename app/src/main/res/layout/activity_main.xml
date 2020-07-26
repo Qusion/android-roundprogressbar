@@ -58,7 +58,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/balance"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="$12.120"
