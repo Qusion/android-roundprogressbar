@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
             progressbar.progress = progress
             balance.text = "$${progress + 120f}"
         }
-        progressbar.
     }
 
 }
