@@ -5,7 +5,8 @@ import android.view.animation.Transformation
 
 class RoundProgressBarAnimation(
     private val roundProgressBar: RoundProgressBar,
-    private val newProgress: Int
+    private val newProgress: Int,
+    private val setAnimationProgress: (Float) -> Unit
 ) : Animation() {
 
     private val oldProgress = roundProgressBar.progress
@@ -19,7 +20,7 @@ class RoundProgressBarAnimation(
         } else {
             oldProgress - ((oldProgress - newProgress) * interpolatedTime)
         }
-        roundProgressBar.animationProgress = progress
+        setAnimationProgress(progress)
         roundProgressBar.requestLayout()
     }
 

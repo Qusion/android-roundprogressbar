@@ -33,13 +33,13 @@
         android:layout_height="250dp"
         android:layout_marginTop="30dp"
         android:padding="10dp"
-        app:animationDuration="1000"
-        app:backgroundStrokeWidth="10dp"
+        app:animation_duration="1000"
+        app:background_stroke_width="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:progress="50"
-        app:strokeWidth="10dp" />
+        app:stroke_width="10dp" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -57,10 +57,12 @@
             android:src="@drawable/ic_coin_stack" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+            android:id="@+id/balance"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="$12.120"
+            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -100,57 +102,57 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/transactions">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_bag"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:src="@drawable/ic_bag" />
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/trans_name_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/trans_ic_1"
-        app:layout_constraintTop_toTopOf="@id/trans_ic_1"
         android:layout_marginStart="20dp"
         android:text="Incoming"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@id/trans_ic_1"
+        app:layout_constraintTop_toTopOf="@id/trans_ic_1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/trans_ic_1"
-        app:layout_constraintTop_toBottomOf="@id/trans_name_1"
         android:layout_marginStart="20dp"
         android:text="04/08/2019 13.34"
         android:textColor="#80FFFFFF"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/trans_ic_1"
+        app:layout_constraintTop_toBottomOf="@id/trans_name_1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/trans_name_1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginRight="20dp"
         android:text="+$200"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trans_name_1" />
 
     <View
         android:id="@+id/trans_delimiter_1"
         android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="#30D8D8D8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trans_ic_1"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/trans_ic_1" />
     <!-- endregion -->
 
     <!-- region Second transaction -->
@@ -164,57 +166,57 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trans_delimiter_1">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_pizza"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:src="@drawable/ic_pizza" />
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/trans_name_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/trans_ic_2"
-        app:layout_constraintTop_toTopOf="@id/trans_ic_2"
         android:layout_marginStart="20dp"
         android:text="In progress"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@id/trans_ic_2"
+        app:layout_constraintTop_toTopOf="@id/trans_ic_2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/trans_ic_2"
-        app:layout_constraintTop_toBottomOf="@id/trans_name_2"
         android:layout_marginStart="20dp"
         android:text="04/08/2019 16.35"
         android:textColor="#80FFFFFF"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/trans_ic_2"
+        app:layout_constraintTop_toBottomOf="@id/trans_name_2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/trans_name_2"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginRight="20dp"
         android:text="-$6.7"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trans_name_2" />
 
     <View
         android:id="@+id/trans_delimiter_2"
         android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="#30D8D8D8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trans_ic_2"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/trans_ic_2" />
     <!-- endregion transaction -->
 
     <!-- region third transaction -->
@@ -228,57 +230,57 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trans_delimiter_2">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_car"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:src="@drawable/ic_car" />
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/trans_name_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/trans_ic_3"
-        app:layout_constraintTop_toTopOf="@id/trans_ic_3"
         android:layout_marginStart="20dp"
         android:text="Incoming"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@id/trans_ic_3"
+        app:layout_constraintTop_toTopOf="@id/trans_ic_3" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/trans_ic_3"
-        app:layout_constraintTop_toBottomOf="@id/trans_name_3"
         android:layout_marginStart="20dp"
         android:text="04/08/2019 13.34"
         android:textColor="#80FFFFFF"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/trans_ic_3"
+        app:layout_constraintTop_toBottomOf="@id/trans_name_3" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/trans_name_3"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginRight="20dp"
         android:text="+$27"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trans_name_3" />
 
     <View
         android:id="@+id/trans_delimiter_3"
         android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="#30D8D8D8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trans_ic_3"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/trans_ic_3" />
     <!-- endregion transaction -->
 
     <androidx.appcompat.widget.AppCompatButton
@@ -286,10 +288,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:visibility="visible"
         android:background="@null"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

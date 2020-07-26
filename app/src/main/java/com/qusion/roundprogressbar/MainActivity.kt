@@ -20,11 +20,13 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         val random = Random(101)
-        var progress = 0
+        var progress: Int
         animate_button.setOnClickListener {
             progress = random.nextInt(0, 100)
             progressbar.progress = progress
+            balance.text = "$${progress + 120f}"
         }
+        progressbar.
     }
 
 }

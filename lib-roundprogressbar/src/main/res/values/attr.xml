@@ -2,20 +2,20 @@
 <resources>
     <declare-styleable name="RoundProgressBar">
         <attr name="max" format="integer" />
-        <attr name="zeroProgressEnabled" format="boolean" />
+        <attr name="zero_progress_enabled" format="boolean" />
         <attr name="progress" format="integer" />
-        <attr name="progressColor" format="color" />
-        <attr name="backgroundColor" format="color" />
-        <attr name="endCapsSize" format="dimension" />
-        <attr name="endCapsVisible" format="boolean" />
-        <attr name="strokeWidth" format="dimension" />
-        <attr name="backgroundStrokeWidth" format="dimension" />
-        <attr name="animationDuration" format="integer" />
+        <attr name="progress_color" format="color" />
+        <attr name="background_color" format="color" />
+        <attr name="end_cap_size" format="dimension" />
+        <attr name="end_cap_visible" format="boolean" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="background_stroke_width" format="dimension" />
+        <attr name="animation_duration" format="integer" />
         <attr format="integer" name="style" >
             <flag name="full" value="0"/>
             <flag name="half" value="1"/>
         </attr>
-        <attr format="integer" name="backgroundStyle">
+        <attr format="integer" name="background_style">
             <flag name="full" value="0"/>
             <flag name="dotted" value="1"/>
         </attr>

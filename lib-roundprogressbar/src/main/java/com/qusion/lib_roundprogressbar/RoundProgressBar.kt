@@ -23,10 +23,10 @@ class RoundProgressBar @JvmOverloads constructor(
     private var mStrokeWidth = 0
     private var mBackgroundStrokeWidth = 0
     private var mMax = 100
-    private var mProgress = 0
+    var mProgress = 0
     private var mAnimationProgress = 0f
-    private var mEndCapsSize = 0
-    private var mEndCapsVisible = false
+    private var mEndCapSize = 0
+    private var mEndCapVisible = false
     private var mAnimationDuration = 1000
     private var mProgressBarStyle = 0
     private var mBackgroundStyle = 0
@@ -49,30 +49,31 @@ class RoundProgressBar @JvmOverloads constructor(
         try {
             mBackgroundColor =
                 a.getColor(
-                    R.styleable.RoundProgressBar_backgroundColor,
+                    R.styleable.RoundProgressBar_background_color,
                     context.getColor(R.color.roundprogressbar_bg_color)
                 )
             mPrimaryProgressColor =
                 a.getColor(
-                    R.styleable.RoundProgressBar_progressColor,
+                    R.styleable.RoundProgressBar_progress_color,
                     context.getColor(R.color.roundprogressbar_colorPrimary)
                 )
             mZeroProgressEnabled =
-                a.getBoolean(R.styleable.RoundProgressBar_zeroProgressEnabled, true)
+                a.getBoolean(R.styleable.RoundProgressBar_zero_progress_enabled, true)
             mMax = a.getInt(R.styleable.RoundProgressBar_max, 100)
             mProgress = a.getInt(R.styleable.RoundProgressBar_progress, 0)
             mAnimationProgress = mProgress.toFloat()
-            mStrokeWidth = a.getDimensionPixelSize(R.styleable.RoundProgressBar_strokeWidth, 8)
-            mBackgroundStrokeWidth = a.getDimensionPixelSize(R.styleable.RoundProgressBar_backgroundStrokeWidth, 4)
-            mEndCapsSize = a.getDimensionPixelSize(R.styleable.RoundProgressBar_endCapsSize, 4)
-            mEndCapsVisible = a.getBoolean(R.styleable.RoundProgressBar_endCapsVisible, true)
-            mAnimationDuration = a.getInteger(R.styleable.RoundProgressBar_animationDuration, 1000)
+            mStrokeWidth = a.getDimensionPixelSize(R.styleable.RoundProgressBar_stroke_width, 8)
+            mBackgroundStrokeWidth =
+                a.getDimensionPixelSize(R.styleable.RoundProgressBar_background_stroke_width, 4)
+            mEndCapSize =
+                a.getDimensionPixelSize(R.styleable.RoundProgressBar_end_cap_size, 2 * mStrokeWidth)
+            mEndCapVisible = a.getBoolean(R.styleable.RoundProgressBar_end_cap_visible, false)
+            mAnimationDuration = a.getInteger(R.styleable.RoundProgressBar_animation_duration, 1000)
             mProgressBarStyle = a.getInteger(R.styleable.RoundProgressBar_style, 0)
-            mBackgroundStyle = a.getInteger(R.styleable.RoundProgressBar_backgroundStyle, 0)
+            mBackgroundStyle = a.getInteger(R.styleable.RoundProgressBar_background_style, 0)
         } finally {
             a.recycle()
         }
-
 
         mBackgroundPaint = Paint().apply {
             isAntiAlias = true
@@ -81,7 +82,7 @@ class RoundProgressBar @JvmOverloads constructor(
             color = mBackgroundColor
         }
 
-        if(mBackgroundStyle == BackgroundStyle.DOTTED.type) {
+        if (mBackgroundStyle == BackgroundStyle.DOTTED.type) {
             val path = Path().also {
                 it.addCircle(0f, 0f, mBackgroundStrokeWidth.toFloat() / 2, Path.Direction.CW)
             }
@@ -112,10 +113,10 @@ class RoundProgressBar @JvmOverloads constructor(
         mPrimaryPaint!!.style = Paint.Style.STROKE
         mPrimaryPaint!!.color = mPrimaryProgressColor
 
-        var full = true
-        var sweepAngle = 360f
-        var progressStartAngle = 270f
-        if(mProgressBarStyle == ProgressBarStyle.FULL.type) {
+        val full: Boolean
+        val sweepAngle: Float
+        val progressStartAngle: Float
+        if (mProgressBarStyle == ProgressBarStyle.FULL.type) {
             full = true
             sweepAngle = 360f
             progressStartAngle = 270f
@@ -131,39 +132,29 @@ class RoundProgressBar @JvmOverloads constructor(
         val primarySwipeAngle = mAnimationProgress * sweepAngle / mMax
         canvas.drawArc(mRectF!!, progressStartAngle, primarySwipeAngle, false, mPrimaryPaint!!)
 
-        // Caps
-        val r = (height - paddingLeft * 2 - mStrokeWidth * 2) / 2
-        val offset = if(full) 90 else 180
-        val trad = (primarySwipeAngle - offset) * (Math.PI / 180.0)
+        // Cap
+        if (mEndCapVisible) {
+            val r = (height - paddingLeft * 2 - mStrokeWidth * 2) / 2
+            val offset = if (full) 90 else 180
+            val trad = (primarySwipeAngle - offset) * (Math.PI / 180.0)
 
-        x = (r * cos(trad))
-        y = (r * sin(trad))
-        mPrimaryPaint!!.style = Paint.Style.FILL
-        if (mEndCapsVisible) {
+            x = (r * cos(trad))
+            y = (r * sin(trad))
+            mPrimaryPaint!!.style = Paint.Style.FILL
+
             if (mZeroProgressEnabled || mAnimationProgress > 0) {
-                // Start Cap
-                canvas.drawCircle(
-                    if(full) (mWidth / 2).toFloat() else mRectF!!.left,
-                    if(full) mStrokeWidth.toFloat() + paddingTop else (mHeight / 2).toFloat(),
-                    mEndCapsSize.toFloat(),
-                    mPrimaryPaint!!
-                )
                 canvas.drawCircle(
                     x.toFloat() + (mWidth / 2).toFloat(),
                     y.toFloat() + (mHeight / 2).toFloat(),
-                    mEndCapsSize.toFloat(),
+                    mEndCapSize.toFloat() / 2,
                     mPrimaryPaint!!
                 )
             }
         }
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-    }
-
-    override fun setBackgroundColor(mBackgroundColor: Int) {
-        this.mBackgroundColor = mBackgroundColor
+    private fun setAnimationProgress(mAnimationProgress: Float) {
+        this.mAnimationProgress = mAnimationProgress
         invalidate()
     }
 
@@ -174,34 +165,32 @@ class RoundProgressBar @JvmOverloads constructor(
             invalidate()
         }
 
+    override fun setBackgroundColor(mBackgroundColor: Int) {
+        this.mBackgroundColor = mBackgroundColor
+        mBackgroundPaint!!.color = mBackgroundColor
+        invalidate()
+    }
+
+    fun getBackgroundColor(): Int {
+        return mBackgroundColor
+    }
+
     var progress: Int
         get() = mProgress
         set(mProgress) {
             var mProg = if (mProgress < mMax) mProgress else mMax
             mProg = if (mProg < 0) 0 else mProg
             if (mProg != this.mProgress) {
-                if(visibility == VISIBLE) {
-                    val animation = RoundProgressBarAnimation(this, mProg)
+                if (visibility == VISIBLE) {
+                    val animation = RoundProgressBarAnimation(this, mProg, ::setAnimationProgress)
                     animation.duration = mAnimationDuration.toLong()
                     this.startAnimation(animation)
                     this.mProgress = mProg
                 } else {
-                    this.animationProgress = mProg.toFloat()
                     this.mProgress = mProg
                 }
             }
         }
-
-    var animationProgress: Float
-        get() = mAnimationProgress
-        set(mAnimationProgress) {
-            this.mAnimationProgress = mAnimationProgress
-            invalidate()
-        }
-
-    fun getBackgroundColor(): Int {
-        return mBackgroundColor
-    }
 
     var max: Int
         get() = mMax
@@ -217,17 +206,17 @@ class RoundProgressBar @JvmOverloads constructor(
             invalidate()
         }
 
-    var endCapsSize: Int
-        get() = mEndCapsSize
-        set(mEndCapsSize) {
-            this.mEndCapsSize = mEndCapsSize
+    var endCapSize: Int
+        get() = mEndCapSize
+        set(mEndCapSize) {
+            this.mEndCapSize = mEndCapSize
             invalidate()
         }
 
-    var isEndCapsVisible: Boolean
-        get() = mEndCapsVisible
-        set(mEndCapsVisible) {
-            this.mEndCapsVisible = mEndCapsVisible
+    var isEndCapVisible: Boolean
+        get() = mEndCapVisible
+        set(mEndCapVisible) {
+            this.mEndCapVisible = mEndCapVisible
             invalidate()
         }
 
