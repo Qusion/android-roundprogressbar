@@ -80,6 +80,7 @@ class RoundProgressBar @JvmOverloads constructor(
             style = Paint.Style.STROKE
             strokeWidth = mBackgroundStrokeWidth.toFloat()
             color = mBackgroundColor
+            strokeCap = Paint.Cap.ROUND
         }
 
         if (mBackgroundStyle == BackgroundStyle.DOTTED.type) {
