@@ -1,22 +1,9 @@
 <img src="banner.png" alt="demo" />
-<p>
-<img align="left" width="400" height="400" src="demo.gif" alt="demo" />
-<p><h1 align="left">Android-RoundProgressbar</h1></p>
-<p>Progress bar library with different styles and built-in animations</p>
-</p>
 
-</br></br></br></br></br></br></br></br></br></br></br></br>
+# Android-RoundProgressbar
+Progress bar library with different styles and built-in animations
 
-## Demo
-<img src="screen-1.png" alt="screen-1" width="800" height="600" align="center" />
-<p>
-<img src="var1.png" alt="screen-1" width="300" height="300" align="left" />
-<img src="var2.png" alt="screen-1" width="300" height="300" align="left" />
-<img src="var3.png" alt="screen-1" width="300" height="300" align="left" />
-<img src="var4.png" alt="screen-1" width="300" height="300" align="left" />
-</p>
-</br></br></br></br></br></br></br></br></br></br></br></br></br>
-</br></br></br></br></br></br></br></br></br></br></br></br></br>
+<img src="demo.gif" alt="demo" />
 
 ## Usage
 ### Implementation
