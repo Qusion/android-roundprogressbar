@@ -7,9 +7,22 @@ Progress bar library with different styles and built-in animations
 
 ## Usage
 ### Implementation
-`dependencies {
-    implementation 'com.github.Qusion:android-pin-dot-view:0.3.0'
-}`
+
+Add jitpack to project-level build.gradle file
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Add dependency to module-level build.gradle file
+```
+dependencies {
+    implementation 'com.github.Qusion:android-roundprogressbar:0.3.0'
+}
+```
 
 ### Layout
 ```
